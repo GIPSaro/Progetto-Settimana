@@ -78,6 +78,14 @@ function displayObj(objects) {
     infoDiv.appendChild(findMoreButton);
     homeObjContainer.appendChild(objDiv);
 
-    //Funzione
+    //Funzione modifica bottone
+
+    homeModifyButton.onclick = function () {
+      const selectedProduct = object._id;
+
+      const objAsString = JSON.stringify(selectedProduct);
+      sessionStorage.setItem("selectedProduct", objAsString);
+      window.location.href = "./backOffice.html";
+    };
   });
 }

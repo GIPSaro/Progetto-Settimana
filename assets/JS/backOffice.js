@@ -14,8 +14,8 @@ const editButton = document.getElementById("editButton");
 const backButton = document.getElementById("backButton");
 const dinamicTitle = document.getElementById("dinamicTitle");
 const resetButton = document.getElementById("resetButton");
-const span = document.getElementById("close")[0];
-const span2 = document.getElementById("close")[1];
+const span = document.getElementById("close1");
+const span2 = document.getElementById("close2");
 const modal = document.getElementById("infoModal");
 const modalTitle = document.getElementById("modalTitle");
 const modalText = document.getElementById("modalText");
@@ -64,11 +64,48 @@ inputButton.onclick = function (event) {
         (modal.style.display = "block")
       )
       .then(fetchAndDisplay());
+    console.log(response);
   } else {
     (modalTitle.textContent = "Attenzione"),
       (modalText.textContent =
         "Inserisci tutti i valori per creare un oggetto"),
       (modal.style.display = "block");
+  }
+};
+
+// Funzione onload
+
+window.onload = function () {
+  $(`[data-toggle= "tooltip"]`).tooltip();
+  if (sessionStorage.getItem("selectedProduct")) {
+    searchButton.disable = true;
+    let objAsString = JSON.parse(sessionStorage.getItem("selectedProduct"));
+    idSearch.value = objAsString;
+    const url2 =
+      "https://striveschool-api.herokuapp.com/api/product" + objAsString;
+    fetch(url2, {
+      method: "GET",
+      headers: {
+        Authorization: apiKey
+      }
+    })
+      .then((raw) => {
+        return raw.json;
+      })
+      .then((dato) => {
+        console.log(dato);
+        displayObj(dato);
+        inputButton.disable = true;
+        editButton.disable = false;
+        editButton.hidden = false;
+        backButton.disable = false;
+        backButton.hidden = false;
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  } else {
+    fetchAndDisplay();
   }
 };
 
@@ -78,10 +115,16 @@ const fetchAndDisplay = function () {
     headers: {
       Authorization: apiKey
     }
-  }).then((raw) => {
-    return raw.json();
-  });
+  })
+    .then((raw) => {
+      return raw.json();
+    })
+    .then((dati) => {
+      displayObj(dati);
+    });
 };
+
+// Funzione display oggetti
 
 function displayObj(objects) {
   objects.forEach((object) => {
@@ -130,5 +173,47 @@ function displayObj(objects) {
     infoDiv.appendChild(objId);
     objId.appendChild(idAnchor);
     objContainer.appendChild(objDiv);
+
+    dinamicTitle.textContent = "Crea Un Nuovo Oggetto";
+
+    //Funzione per inserire l'ID oggetto nel form Input
+
+    idAnchor.onclick = function () {
+      idSearch.value = object._id;
+    };
   });
 }
+//Funzione Search tramite id
+
+searchButton.onclick = function (event) {
+  event.preventDefault();
+
+  if (searchForm.checkValidity()) {
+    const url2 =
+      "https://striveschool-api.herokuapp.com/api/product" + idSearch.value;
+    console.log(url2);
+    fetch(url2, {
+      method: "GET",
+      headers: {
+        Authorization: apiKey
+      }
+    })
+      .then((raw) => {
+        if (!raw.ok) {
+          throw new Error("Nessun prodotto corrisponde all'Id inserita.");
+        }
+        return raw.json();
+      })
+      .then((dato) => {
+        console.log(dato);
+        objContainer.innerHTML = "";
+        displayObj(dato);
+        inputButton.disable = true;
+        editButton.disable = false;
+        editButton.hidden = false;
+        backButton.disable = false;
+        backButton.hidden = false;
+      });
+  }
+  //Funzione display oggetti
+};
