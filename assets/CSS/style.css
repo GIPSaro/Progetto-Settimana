@@ -52,11 +52,30 @@ input {
   border-radius: 10px;
   color: cadetblue;
 }
-footer p {
-  margin-bottom: 0.5em;
-}
 
 .objImage {
   max-width: 200px;
   margin: 1em 0 1em 0;
+}
+.objImage2 {
+  max-height: 800px;
+  margin: 1em 0 1em 0;
+}
+.infoDiv {
+  margin-left: 2em;
+}
+
+.infoDiv2 {
+  font-size: 1.4em;
+}
+
+.footerLogo {
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0 1em 0 1em;
+  cursor: pointer;
+}
+
+footer p {
+  margin-bottom: 0.5em;
 }

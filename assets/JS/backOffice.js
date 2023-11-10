@@ -76,7 +76,6 @@ inputButton.onclick = function (event) {
 // Funzione onload
 
 window.onload = function () {
-  $(`[data-toggle= "tooltip"]`).tooltip();
   if (sessionStorage.getItem("selectedProduct")) {
     searchButton.disable = true;
     let objAsString = JSON.parse(sessionStorage.getItem("selectedProduct"));
@@ -213,7 +212,91 @@ searchButton.onclick = function (event) {
         editButton.hidden = false;
         backButton.disable = false;
         backButton.hidden = false;
+      })
+      .catch((error) => {
+        modalTitle.textContent = "Attenzione";
+        modalText.textContent =
+          "Inserisci un Id o clicca sull?ID oggetto desiderato per passare alla modalità modifica";
+        modal.style.display = "block";
       });
   }
-  //Funzione display oggetti
+  //Funzione display oggetti selezionati
+
+  function displayIdObj(object) {
+    const objDiv = document.createElement("div");
+    objDiv.className = "objDiv";
+    objDiv.classList.add("d-flex", "col-12", "col-lg-6");
+
+    const imageDiv = document.createElement("div");
+    imageDiv.className = "imageDiv";
+
+    const objImage = document.createElement("img");
+    objImage.src = object.imageUrl;
+    objImage.alt = object.description + object.brand + object.name;
+    objImage.className = "objImage";
+
+    const infoDiv = document.createElement("div");
+    infoDiv.className = "infoDiv";
+    infoDiv.classList.add("d-flex", "flex-column", "justify-content-evenly");
+
+    const objName = document.createElement("h3");
+    objName.textContent = "Name: " + object.name;
+
+    const objBrand = document.createElement("p");
+    objBrand.textContent = "Brand: " + object.brand;
+
+    const objDescription = document.createElement("p");
+    objDescription.textContent = "Description: " + object.description;
+
+    const objPrice = document.createElement("p");
+    objPrice.textContent = "Price: A partire da " + object.price + "€";
+
+    const objId = document.createElement("p");
+    objId.textContent = "ID: " + object._id;
+
+    const objDeleteButton = document.createElement("button");
+    objDeleteButton.type = "button";
+    objDeleteButton.classList.add("button");
+    objDeleteButton.textContent = "Rimuovi";
+
+    objDiv.appendChild(objImage);
+    objDiv.appendChild(infoDiv);
+    infoDiv.appendChild(objName);
+    infoDiv.appendChild(objBrand);
+    infoDiv.appendChild(objDescription);
+    infoDiv.appendChild(objPrice);
+    infoDiv.appendChild(objId);
+
+    objContainer.appendChild(objDiv);
+    infoDiv.appendChild(objDeleteButton);
+
+    ProdName.value = object.name;
+    ProdDescription.value = object.description;
+    prodBrand.value = object.brand;
+    prodImageUrl.value = object.imageUrl;
+    prodPrice.value = object.price;
+    dinamicTitle.textContent = "Modifica Il Tuo Oggetto";
+  }
+};
+// funzione chiusura Modali
+
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+span2.onclick = function () {
+  deleteModal.style.display = "none";
+};
+
+closeDeleteModalBtn.onclick = function () {
+  deleteModal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+  if (event.target == deleteModal) {
+    deleteModal.style.display = "none";
+  }
 };
