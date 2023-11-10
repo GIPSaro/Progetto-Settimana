@@ -55,3 +55,8 @@ input {
 footer p {
   margin-bottom: 0.5em;
 }
+
+.objImage {
+  max-width: 200px;
+  margin: 1em 0 1em 0;
+}
