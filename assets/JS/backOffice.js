@@ -216,7 +216,7 @@ searchButton.onclick = function (event) {
       .catch((error) => {
         modalTitle.textContent = "Attenzione";
         modalText.textContent =
-          "Inserisci un Id o clicca sull?ID oggetto desiderato per passare alla modalità modifica";
+          "Inserisci un Id o clicca sull'ID oggetto desiderato per passare alla modalità modifica";
         modal.style.display = "block";
       });
   }

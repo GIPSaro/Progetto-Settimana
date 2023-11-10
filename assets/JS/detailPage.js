@@ -18,7 +18,6 @@ window.onload = function () {
     })
     .then((dato) => {
       displayObj(dato);
-      console.log(dato);
     });
   const displayObj = function () {
     const objDiv = document.createElement("div");
