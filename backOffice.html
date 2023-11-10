@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/CSS/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container d-flex justify-content-between align-item-center">
+        <h1>Back Office</h1>
+        <a href="#">
+          <img
+            src="./assets/img/house-door-fill.svg"
+            alt="home"
+            class="homeIcon"
+            data-toggle="tooltip"
+            title="HomePage"
+            data-bs-placement="bottom"
+          />
+        </a>
+        <a href="#">
+          <img
+            src="./assets/img/arrow-up-circle-fill.svg"
+            alt="arrowTop"
+            class="homeIcon"
+            data-toggle="tooltip"
+            title="Back To Top"
+            data-bs-placement="bottom"
+            id="topArrow"
+          />
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="mb-2">
+          <h2
+            data-toggle="tooltip"
+            title="Compila tutti i campi e crea un nuovo oggetto!"
+            data-bs-placement="right"
+            id="dinamicTitle"
+          ></h2>
+          <form id="inputForm">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Nome"
+              required
+            />
+            <input
+              type="text"
+              name="description"
+              id="description"
+              placeholder="Description"
+              required
+            />
+            <input
+              type="text"
+              name="brand"
+              id="brand"
+              placeholder="Brand"
+              required
+            />
+            <input
+              type="text"
+              name="imageUrl"
+              id="imageUrl"
+              placeholder="ImageUrl"
+              required
+            />
+            <input
+              type="number"
+              name="price"
+              id="price"
+              placeholder="Price"
+              required
+            />
+            <div>
+              <button type="submit" id="inputButton" class="button">
+                Aggiungi Oggetto
+              </button>
+
+              <button type="submit" id="resetButton" class="button">
+                Reset Form
+              </button>
+              <button
+                type="button"
+                id="editButton"
+                class="button"
+                disabled
+                hidden
+              >
+                Modifica Oggetto
+              </button>
+              <button
+                type="submit"
+                id="backButton"
+                class="button"
+                disabled
+                hidden
+              >
+                Torna Indietro
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div>
+        <h2
+          data-toggle="tooltip"
+          title="Cerca un oggetto tramite Id. Cliccando sull'Id dell'oggetto avrai la possibilità di poterlo modificare o eliminare"
+          data-bs-placement="right"
+        >
+          Modifica o Rimuovi un Oggetto
+        </h2>
+        <form id="searchForm">
+          <input
+            type="text"
+            name="idInput"
+            id="idInput"
+            placeholder="ID OGGETTO"
+            required
+          />
+          <button type="submit" id="searchButton" class="button">
+            Trova Oggetto
+          </button>
+        </form>
+      </div>
+      <div id="objContainer" class="row"></div>
+    </main>
+    <footer>
+      <p>Product Spa, All Right Reserved</p>
+      <div class="d-flex justify-content-center">
+        <img
+          src="./assets/img/facebook.svg"
+          alt="facebook logo"
+          class="footerLogo"
+        />
+        <img
+          src="./assets/img/instagram.svg"
+          alt="instagram logo"
+          class="footerLogo"
+        />
+        <img
+          src="./assets/img/twitter-x.svg"
+          alt="twitter logo"
+          class="footerLogo"
+        />
+      </div>
+    </footer>
+    <script src="./assets/JS/backOffice.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

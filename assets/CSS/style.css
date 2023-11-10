@@ -1,0 +1,45 @@
+body {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: cadetblue;
+  background: linear-gradient(90deg, aliceblue, lightgray);
+}
+
+header {
+  background: linear-gradient(90deg, aliceblue, lightgray);
+  color: rgb(176, 175, 175);
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  position: sticky;
+  top: 0;
+}
+h2 {
+  display: inline-block;
+}
+.homeIcon {
+  width: 2em;
+  height: 2em;
+  margin-bottom: 1em;
+}
+#topArrow {
+  margin-right: 15em;
+}
+
+.button {
+  background-color: cadetblue;
+  color: aliceblue;
+  border: 0;
+  border-radius: 10px;
+  font-size: 1em;
+  padding: 0.3em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+input {
+  margin-bottom: 1em;
+  background-color: aliceblue;
+  border: 2px solid cadetblue;
+  border-radius: 10px;
+  color: cadetblue;
+}
