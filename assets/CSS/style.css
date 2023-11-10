@@ -36,10 +36,22 @@ h2 {
   margin-right: 1em;
   margin-bottom: 1em;
 }
+
+.button:hover {
+  box-shadow: 2px 2px 2px 2px rgb(91, 91, 92);
+}
+.button:disabled {
+  box-shadow: none;
+  background-color: rgb(123, 189, 150);
+  color: whitesmoke;
+}
 input {
   margin-bottom: 1em;
   background-color: aliceblue;
   border: 2px solid cadetblue;
   border-radius: 10px;
   color: cadetblue;
+}
+footer p {
+  margin-bottom: 0.5em;
 }
