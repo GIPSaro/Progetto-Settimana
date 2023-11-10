@@ -43,7 +43,7 @@ inputButton.onclick = function (event) {
     data.price !== ""
   ) {
     fetch(url, {
-      method: "GET",
+      method: "POST",
       headers: {
         Authorization: apiKey,
         "Content-Type": "application/json"
@@ -64,7 +64,6 @@ inputButton.onclick = function (event) {
         (modal.style.display = "block")
       )
       .then(fetchAndDisplay());
-    console.log(response);
   } else {
     (modalTitle.textContent = "Attenzione"),
       (modalText.textContent =
