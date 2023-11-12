@@ -4,9 +4,11 @@ const apiKey =
 const detailObjContainer = document.getElementById("detailObjContainer");
 
 window.onload = function () {
+  // $(`[data-toogle="tooltip"]`).tooltip();
   let objAsString = JSON.parse(sessionStorage.getItem("selectedProduct"));
   const url2 =
-    "https://striveschool-api.herokuapp.com/api/product" + objAsString;
+    "https://striveschool-api.herokuapp.com/api/product/" + objAsString;
+
   fetch(url2, {
     method: "GET",
     headers: {
@@ -17,9 +19,9 @@ window.onload = function () {
       return raw.json();
     })
     .then((dato) => {
-      displayObj(dato);
+      displayIdObj(dato);
     });
-  const displayObj = function () {
+  function displayIdObj(object) {
     const objDiv = document.createElement("div");
     objDiv.className = "objDiv2";
     objDiv.classList.add("d-flex", "justify-content-evenly");
@@ -53,5 +55,5 @@ window.onload = function () {
     infoDiv.appendChild(objPrice);
 
     detailObjContainer.appendChild(objDiv);
-  };
+  }
 };

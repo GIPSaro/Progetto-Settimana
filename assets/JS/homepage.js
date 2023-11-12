@@ -6,25 +6,25 @@ const homeObjContainer = document.getElementById("homeObjContainer");
 
 window.onload = function () {
   fetchAndDisplay();
+  // $(`[data-toogle="tooltip"]`).tooltip();
 };
 
 //Funzione Display Oggetti
 
-const fetchAndDisplay = function () {
+function fetchAndDisplay() {
   fetch(url, {
     method: "GET",
     headers: {
       Authorization: apiKey
     }
   })
-    .then((raw) => {
-      return raw.json();
-    })
-    .then((dati) => {
-      console.log(dati);
-      displayObj(dati);
+    .then((raw) => raw.json())
+    .then((data) => {
+      console.log(data);
+      const objectsArray = Object.values(data); // Converte l'oggetto in un array di oggetti
+      displayObj(objectsArray);
     });
-};
+}
 function displayObj(objects) {
   objects.forEach((object) => {
     const objDiv = document.createElement("div");
@@ -55,8 +55,6 @@ function displayObj(objects) {
     const objPrice = document.createElement("p");
     objPrice.textContent = "Price: A partire da " + object.price + "€";
 
-    const objId = document.createElement("p");
-
     const homeModifyButton = document.createElement("button");
     homeModifyButton.type = "button";
     homeModifyButton.classList.add("button");
@@ -86,6 +84,16 @@ function displayObj(objects) {
       const objAsString = JSON.stringify(selectedProduct);
       sessionStorage.setItem("selectedProduct", objAsString);
       window.location.href = "./backOffice.html";
+    };
+
+    //Funzione Find More Button
+
+    findMoreButton.onclick = function () {
+      const selectedProduct = object._id;
+
+      const objAsString = JSON.stringify(selectedProduct);
+      sessionStorage.setItem("selectedProduct", objAsString);
+      window.location.href = "./detailPage.html";
     };
   });
 }
